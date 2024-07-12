@@ -9,6 +9,7 @@ WORKDIR /app
 COPY . .
 
 # Build the application
+RUN apk add --no-cache musl-dev pkgconfig
 RUN cargo build --verbose --release
 
 # Stage 2: Create a minimal runtime image
