@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the application
+RUN rustup target add x86_64-alpine-linux-musl
 RUN cargo build --locked --verbose --release --target x86_64-alpine-linux-musl
 
 # Stage 2: Create a minimal runtime image
