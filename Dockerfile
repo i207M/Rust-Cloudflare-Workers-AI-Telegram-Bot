@@ -8,10 +8,6 @@ WORKDIR /app
 COPY . .
 
 # Build the application
-RUN apt-get update && \
-    apt-get install -y libssl-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN rustup target add x86_64-unknown-linux-musl
 RUN cargo build --locked --verbose --release --target x86_64-unknown-linux-musl
 
