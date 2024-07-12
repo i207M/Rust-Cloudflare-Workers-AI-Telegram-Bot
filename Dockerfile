@@ -9,7 +9,7 @@ COPY . .
 
 # Build the application
 RUN rustup target add x86_64-unknown-linux-musl
-RUN cargo build --locked --verbose --release --target x86_64-unknown-linux-musl
+RUN cargo build --verbose --release --target x86_64-unknown-linux-musl
 
 # Stage 2: Create a minimal runtime image
 FROM alpine:latest
