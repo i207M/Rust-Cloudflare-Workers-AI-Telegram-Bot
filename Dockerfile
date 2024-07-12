@@ -5,6 +5,7 @@ ARG APP_NAME=Rust-Cloudflare-Workers-AI-Telegram-Bot
 WORKDIR /app/build
 
 COPY . .
+RUN apk add pkgconfig
 RUN cargo build --locked --verbose --release
 RUN cp /app/build/target/release/$APP_NAME /app/server
 
