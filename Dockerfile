@@ -18,5 +18,9 @@ WORKDIR /app
 
 COPY --from=build /app/target/release/$APP_NAME /app/server
 
+RUN apt-get update && \
+    apt-get install -y ca-certificates && \
+    apt-get clean
+
 # Set the startup command
 CMD ["/app/server"]
