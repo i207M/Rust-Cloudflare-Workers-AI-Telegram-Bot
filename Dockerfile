@@ -17,6 +17,7 @@ FROM debian:bullseye-slim
 WORKDIR /app
 
 COPY --from=build /app/target/release/$APP_NAME /app/server
+RUN chmod +x /app/server
 
 # Set the startup command
 CMD ["/app/server"]
