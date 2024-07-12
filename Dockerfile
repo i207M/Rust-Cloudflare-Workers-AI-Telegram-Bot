@@ -1,20 +1,19 @@
 # Stage 1: Build the Rust binary
-FROM rust:1-bullseye AS build
+FROM rust:1-alpine AS build
 
 # Set a working directory
+ARG APP_NAME=Rust-Cloudflare-Workers-AI-Telegram-Bot
 WORKDIR /app
 
 # Copy the source code
 COPY . .
 
 # Build the application
-RUN rustup target add x86_64-unknown-linux-musl
-RUN cargo build --verbose --release --target x86_64-unknown-linux-musl
+RUN cargo build --verbose --release
 
 # Stage 2: Create a minimal runtime image
 FROM alpine:latest
 
-ARG APP_NAME=Rust-Cloudflare-Workers-AI-Telegram-Bot
 WORKDIR /app
 
 RUN apk --no-cache add ca-certificates
